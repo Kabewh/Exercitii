@@ -10,7 +10,6 @@ int main() {
 	char * pch;
 	pch = strstr(rasp, "da");
 
-	/*works*/
 	while (rasp == pch) {
 		char rasp1[10];
 		printf("Tusiti?\n", rasp1);
