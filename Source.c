@@ -44,6 +44,7 @@ int main() {
 		}
 		break;
 	}
+	
 	while (rasp != pch) {
 		char xrasp[10];
 		printf("Va doare in gat?\n");
@@ -56,17 +57,33 @@ int main() {
 			scanf("%f", &xrasp1);
 			if (xrasp1 <= 38.5) {
 				printf("Aveti rinita\n");
-
 			}
 			if (xrasp1 > 38.5) {
 				printf("Aveti amigdalita\n");
-
 			}
+		}
+		if (xrasp != xpch) {
+			char yrasp[10];
+			printf("Va doare capul?\n");
+			scanf("%s", &yrasp);
+			char* ypch;
+			ypch = strstr(yrasp, "da");
+			if (yrasp == ypch) {
+				float yrasp1;
+				printf("Ce temperatura aveti?\n");
+				scanf("%f", &yrasp1);
+				if (yrasp1 <= 37.5) {
+					printf("Aveti o migrena\n");
+				}
+				if (yrasp1 > 37.5) {
+					printf("Aveti gripa\n");
+				}
+			}
+
 		}
 		break;
 	}
-	
-	
+
 
 
 
