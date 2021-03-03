@@ -3,7 +3,7 @@
 #include <string.h>
 int main() {
 	
-	/*branch 1*/
+	/*FULLY WORKING*/
 	char rasp[10];
 	printf("Simtiti durere in zona toracelui?\n");
 	scanf("%s", &rasp);
