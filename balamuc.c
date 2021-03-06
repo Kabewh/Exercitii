@@ -1,5 +1,3 @@
-NU MERGE PARTEA CU FISIERU
-
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
@@ -37,7 +35,7 @@ int main()
         ps = strstr(rasp, "da");
         if (rasp == ps)
         {
-            // Read data
+            // MENIU ADAUGARE PERSOANE
 
             nruser++;
             cid++;
@@ -50,49 +48,49 @@ int main()
             printf("\n");
 
             // Save data
-            fprintf(file, "%s\t%f\t%f\n", persoana, greutate, inaltime);
+            fprintf(file, "%s\t%d\t%f\t%f\n", persoana, nruser, greutate, inaltime);
 
         }
         if (rasp != ps)
         {
-            printf("Menu closed");
+            printf("Meniu adaugare persoane inchis.\n\n\nMeniu cautare dupa id.\n");
             break;
         }
     }
-
-    // Close the file
     fclose(file);
 
-    // Open the file for reading
-    file = fopen("persoaneid.txt", "a");
-   
-    // Load and display data
+    file = fopen("persoaneid.txt", "w");
+    // AFISAREA UNEI PERSOANE DUPA ID:
+    // PRINTEAZA UN SINGUR UTILIZATOR, DUPA CARE ISI DA OVERWRITE
+    char rasp1[5];
+    printf("Doresti sa cauti o persoana dupa id?\n");
+    scanf("%s", &rasp1);
+    char* ps1;
+    ps1 = strstr(rasp1, "da");
+    if (rasp1 == ps1)
     i = 0;
     while (!feof(file) && !found)
     {
         ++i;
         fscanf(file, "%s\t%d\t%d\n", persoana, nruser, cid);
-        while (nruser == cid)
+        printf("Introdu id-ul unei persoane: \n");
+        scanf("%d", &cid);
+        if (nruser == cid)
         {
-            fprintf(file, "Utilizatorul %s are id-ul %d\n", persoana, cid);
+            fprintf(file, "Id-ul %d apartine utilizatorului %s\n", cid, persoana);
             found = 1;
-            if (nruser != cid) {
-                break;
-            }
+            break;
+          
+        }
+        if (nruser != cid) {
+            printf("Id-ul introdus nu este valid");
             break;
         }
-        //}
-        // if (!found)
-            // printf("Ai introdus o noua persoana cu succes.");
-
-        // Close the file
-        //fclose(file);
-
-
-
-
-
-
+        break;
     }
+        
+        fclose(file);
+
+    
     return 0;
 }
