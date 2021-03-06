@@ -31,7 +31,7 @@ int main()
         ps = strstr(rasp, "da");
         if (rasp == ps)
         {
-            // MENIU ADAUGARE PERSOANE
+            // MENIU ADAUGARE PERSOANE1
     
             nruser++;
             cid++;
