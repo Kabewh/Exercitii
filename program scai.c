@@ -1,17 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
-
 #include <stdlib.h>
-int sum(int n)
-{
-    int add = 0;
-    for (int i = 1; i <= n; i++)
-    {
-        add += i;
-    }
-    return add;
-}
 int main()
 {
     FILE* file1;
@@ -19,19 +9,16 @@ int main()
     FILE* file3;
     int i;
     int c;
-    float sum;
-    int counter;
     int cid = 0;
     int nruser = 0;
-    float mediebmi;
     float greutate;
     float inaltime;
     float bmi;
     char x = "stop";
     char* persoana[32];
     
-    file1 = fopen("persoane.txt", "w"); //fisier input
-    file3 = fopen("dateout.txt", "w");  //fisier output
+    file1 = fopen("persoane.txt", "w"); 
+    file3 = fopen("dateout.txt", "w");  
     printf("Meniu adaugare persoane. \n\n\n");
     
     for (i = 0; i != x; ++i)
@@ -56,19 +43,24 @@ int main()
             printf("\n");
             bmi = greutate / (inaltime * inaltime);
             printf("BMI-ul tau este: %f\n", bmi);
-            if (bmi < 18.5) {
+            if (bmi < 18.5) 
+            {
                 printf("Risc ridicat; greutate prea mica.\n");
             }
-            else if (bmi >= 18.5 && bmi < 25) {
+            else if (bmi >= 18.5 && bmi < 25) 
+            {
                 printf("Minim; Risc scazut\n");
             }
-            else if (bmi >= 25 && bmi < 30) {
+            else if (bmi >= 25 && bmi < 30) 
+            {
                 printf("Scazut; Risc mediu\n");
             }
-            else if (bmi >= 30 && bmi < 35) {
+            else if (bmi >= 30 && bmi < 35) 
+            {
                 printf("Mediu; Risc ridicat\n");
             }
-            else if (bmi > 35){
+            else if (bmi > 35)
+            {
                 printf("Risc ridicat; Greutate prea mare\n");
             }
             // Salveaza datele intr-un fisier "persoane.txt" (input data)
@@ -86,23 +78,27 @@ int main()
     fclose(file3);
 
     // MENIU AFISARE PERSOANE DUPA ID:
-    //sum = bmi * nruser;
-    //printf("Suma BMI este: %f\n", sum);
+
+    // ========================================== //
+    // Codu de jos ar trebui ca in momentu in care eu introduc id-ul unei persoane, el sa imi afiseze numele persoanei care corespunde cu id-ul introdus.
+    // Ideea e ca merge doar pentru ultima persoana introdusa, nu stiu cum sa fac sa stochez celelalte persoane introduse in meniul de adaugare persoane de mai sus
     char rasp1[5];
     printf("Doresti sa cauti o persoana dupa id?\n");
     scanf("%s", &rasp1);
     char* ps1;
     ps1 = strstr(rasp1, "da");
-    if (rasp1 == ps1) {
+    if (rasp1 == ps1) 
+    {
         while (rasp1 > 0)
         {
-            //fscanf(file1, "%s\t%d\t%d\n", persoana, nruser, cid);
             printf("Introdu id-ul unei persoane: \n");
             scanf("%d", &nruser);
-            if (nruser == cid) {
+            if (nruser == cid)
+            {
                 printf("Id-ul %d apartine utilizatorului %s\n", nruser, persoana);
             }
-            else if (nruser != cid) {
+            else if (nruser != cid) 
+            {
                 printf("ceva nu-i bine");
             }
             break;
