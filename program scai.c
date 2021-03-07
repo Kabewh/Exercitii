@@ -81,7 +81,9 @@ int main()
 
     // ========================================== //
     // Codu de jos ar trebui ca in momentu in care eu introduc id-ul unei persoane, el sa imi afiseze numele persoanei care corespunde cu id-ul introdus.
-    // Ideea e ca merge doar pentru ultima persoana introdusa, nu stiu cum sa fac sa stochez celelalte persoane introduse in meniul de adaugare persoane de mai sus
+    // Ideea e ca merge doar pentru ultima persoana introdusa, nu stiu cum sa fac sa accesez celelalte persoane introduse in meniul de adaugare persoane de mai sus
+    // Ca dupa sa pot face treaba asta. |
+    //                                  V
     char rasp1[5];
     printf("Doresti sa cauti o persoana dupa id?\n");
     scanf("%s", &rasp1);
