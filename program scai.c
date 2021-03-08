@@ -9,6 +9,7 @@ typedef struct persoana
     int id;
     float bmi;
 }persoana;
+
 void setpers(persoana* pers, int id, float inaltime, int greutate, float bmi) 
 {
     pers->id = id;
@@ -57,7 +58,9 @@ int main()
             printf("\n");
             bmi = greutate / (inaltime * inaltime);
             printf("BMI-ul tau este: %f\n", bmi);
-            setpers(persoane[i], nruser, greutate, inaltime);
+            persoane[i] = malloc(sizeof(persoana));
+
+            setpers(persoane[i], nruser, greutate, inaltime, bmi);
             if (bmi < 18.5) 
             {
                 printf("Risc ridicat; greutate prea mica.\n");
@@ -89,7 +92,6 @@ int main()
             break;
         }
     }
-    printf("%d", persoane[0]->id);
     fclose(file1);
     fclose(file3);
 
@@ -105,20 +107,16 @@ int main()
     ps1 = strstr(rasp1, "da");
     if (rasp1 == ps1) 
     {
-        while (rasp1 > 0)
-        {
-            printf("Introdu id-ul unei persoane: \n");
-            scanf("%d", &nruser);
-            if (nruser == cid)
+        printf("Introduceti id-ul: ");
+        scanf("%d", &nruser);
+            for (int j = 0; j < i; j++)
             {
-                printf("Id-ul %d apartine utilizatorului %s\n", nruser, nume);
+                if (nruser == persoane[j]->id) 
+                {
+                    printf("%f", persoane[j]->bmi);
+                }
             }
-            else if (nruser != cid) 
-            {
-                printf("ceva nu-i bine");
-            }
-            break;
-        }
+   
     }
     if (rasp1 != ps1) 
     {
