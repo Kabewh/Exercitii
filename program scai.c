@@ -8,10 +8,12 @@ typedef struct persoana
     float inaltime;
     int id;
     float bmi;
+    char nume[20];
 }persoana;
 
-void setpers(persoana* pers, int id, float inaltime, int greutate, float bmi) 
+void setpers(persoana* pers,char nume[], int id, float inaltime, int greutate, float bmi) 
 {
+    strcpy(pers->nume, nume);
     pers->id = id;
     pers->inaltime = inaltime;
     pers->greutate = greutate;
@@ -31,7 +33,7 @@ int main()
     float inaltime;
     float bmi;
     char x = "stop";
-    char* nume[32];
+    char nume[20];
     persoana* persoane[20];
     file1 = fopen("persoane.txt", "w"); 
     file3 = fopen("dateout.txt", "w");  
@@ -51,6 +53,7 @@ int main()
             
             printf("Introdu o noua persoana: "); scanf("%s", nume);
             printf("\n");
+            printf("%d", sizeof(nume));
             printf("Id-ul tau este: %d\n", nruser); 
             printf("Introdu greutatea in kg: "); scanf("%f", &greutate);
             printf("\n");
@@ -60,7 +63,7 @@ int main()
             printf("BMI-ul tau este: %f\n", bmi);
             persoane[i] = malloc(sizeof(persoana));
 
-            setpers(persoane[i], nruser, greutate, inaltime, bmi);
+            setpers(persoane[i], nume, nruser, greutate, inaltime, bmi);
             if (bmi < 18.5) 
             {
                 printf("Risc ridicat; greutate prea mica.\n");
@@ -97,9 +100,6 @@ int main()
 
     // MENIU AFISARE PERSOANE DUPA ID:
 
-    // ========================================== //
-    // Codu de jos ar trebui ca in momentu in care eu introduc id-ul unei persoane, el sa imi afiseze numele persoanei care corespunde cu id-ul introdus.
-    // Ideea e ca merge doar pentru ultima persoana introdusa, nu stiu cum sa fac sa stochez celelalte persoane introduse in meniul de adaugare persoane de mai sus
     char rasp1[5];
     printf("Doresti sa cauti o persoana dupa id?\n");
     scanf("%s", &rasp1);
@@ -111,9 +111,10 @@ int main()
         scanf("%d", &nruser);
             for (int j = 0; j < i; j++)
             {
+                
                 if (nruser == persoane[j]->id) 
                 {
-                    printf("%f", persoane[j]->bmi);
+                    printf("Id-ul introdus apartine persoanei: %s", persoane[j]->nume);
                 }
             }
    
@@ -122,21 +123,6 @@ int main()
     {
         printf("Ok.\nMeniu cautare persoane dupa id inchis.");
     }
-        //fclose(file1);
-   //Afisare date out
-    /*file1 = fopen("persoane.txt", "r");
-    file3 = fopen("dateout.txt", "w");
-    for (i = 0; i < nruser ; ++i) 
-    {
-        if (bmi > 0.01) 
-        {
-            fprintf(file3, "ID: %d\tNume: %s\tBMI: %f\n", nruser, persoana, bmi);
-        }
-    }
-    
-
-    fclose(file3);
-    fclose(file1);
-    */
+  
     return 0;
 }
